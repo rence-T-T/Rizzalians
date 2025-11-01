@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rizzalian - Home</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"></div>
+      <div class="nav-buttons">
+        <button onclick="window.location.href='rizzalian.html'">Logout</button>
+      </div>
+  </nav>
+
+  <!-- Navigation Arrows -->
+  <button class="nav-arrow left" id="leftArrow">←</button>
+  <button class="nav-arrow right" id="rightArrow">→</button>
+
+  <main class="feed" id="feed"></main>
+
+  <!-- Instagram-style sliding profile panel -->
+  <div class="user-panel" id="userPanel">
+    <div class="panel-container">
+      <div class="panel-header">
+        <button class="close-btn" id="closePanel">✖</button>
+      </div>
+
+      <div class="user-main">
+        <div class="profile-section">
+          <img id="panelMainImg" class="main-photo" src="" alt="User">
+          <div class="action-buttons">
+            <button class="action-btn like-btn" id="likeBtn">❤️ Like</button>
+            <button class="action-btn dislike-btn" id="dislikeBtn">✖ Dislike</button>
+            <button class="match-btn" id="matchBtn" style="display: none;"></button>
+          </div>
+        </div>
+        <h2 id="panelName"></h2>
+      </div>
+
+      <!-- User Details -->
+      <div class="user-details" id="userDetails"></div>
+
+      <!-- Looking For -->
+      <div class="looking-for-section">
+        <h3 class="section-title">Looking For</h3>
+        <p class="looking-for-text" id="lookingFor"></p>
+      </div>
+
+      <!-- Gallery -->
+      <h3 class="section-title">Gallery</h3>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </div>
+
+  <!-- ✅ Footer Navigation (added) -->
+  <footer class="footer-nav">
+    <button class="nav-btn" onclick="window.location.href='home.html'">
+      <img src="home.png" alt="Home">
+    </button>
+    <button class="nav-btn" onclick="window.location.href='myaccount.html'">
+      <img src="profile.png" alt="Profile">
+    </button>
+    <button class="nav-btn" onclick="window.location.href='statistics.html'">
+      <img src="stats.png" alt="Statistics">
+    </button>
+  </footer>
+
+  <script src="home.js"></script>
+</body>
+</html>
