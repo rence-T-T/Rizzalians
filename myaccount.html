@@ -18,15 +18,13 @@
     <!-- Profile Card -->
     <section class="profile-card">
       <div class="profile-pic-container">
-        <img src="https://i.pravatar.cc/300?img=10" alt="Profile" id="profilePic">
+        <img src="https://via.placeholder.com/300/cccccc/666666?text=No+Photo" alt="Profile" id="profilePic">
         <label for="uploadProfilePic" class="pic-edit"> + </label>
-        <input type="file" id="uploadProfilePic" hidden />
+        <input type="file" id="uploadProfilePic" accept="image/*" hidden />
       </div>
-
       <div class="profile-details">
-        <h2 id="username">Shane Ramirez</h2>
-        <p id="profession">Real Estate Agent | Tech Enthusiast</p>
-        <p id="bio">Loves connecting people, exploring new ideas, and building meaningful relationships 💙</p>
+        <h2 id="username">Loading...</h2>
+        <p id="bio">Loading bio...</p>
         <p id="extraDetails"></p>
         <button id="editProfileBtn">Edit Profile</button>
       </div>
@@ -36,25 +34,23 @@
     <div class="modal" id="editProfileModal">
       <div class="modal-content">
         <h3>Edit Profile</h3>
-
         <input type="text" id="editName" placeholder="Full Name">
         <input type="number" id="editAge" placeholder="Age">
         <input type="date" id="editBirthday" placeholder="Birthday">
-        <input type="text" id="editWork" placeholder="Work / Occupation">
-
+        <input type="text" id="editGraduatedCourse" placeholder="Graduated Course (e.g., BS Computer Science)">
+        <input type="number" id="editGraduationYear" placeholder="Graduation Year (e.g., 2020)">
+        <input type="text" id="editCurrentProfession" placeholder="Current Profession">
         <select id="editGender">
           <option value="" disabled selected>Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
-
         <input type="text" id="editLocation" placeholder="Location">
-        <input type="text" id="editHeight" placeholder="Height (e.g., 5'8&quot;)">
+        <input type="text" id="editHeight" placeholder="Height (e.g., 170 or 5'8&quot;)">
         <input type="text" id="editHobbies" placeholder="Hobbies (e.g., reading, traveling)">
         <input type="text" id="editLookingFor" placeholder="Looking for (e.g., friendship, relationship)">
         <textarea id="editBio" placeholder="Your bio..."></textarea>
-
         <div class="modal-buttons">
           <button id="cancelEdit">Cancel</button>
           <button id="saveProfile">Save</button>
@@ -76,6 +72,7 @@
     </button>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="myaccount.js"></script>
 </body>
 </html>

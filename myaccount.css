@@ -152,6 +152,7 @@ body {
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(2px);
+  z-index: 2000;
 }
 
 .modal.active {
