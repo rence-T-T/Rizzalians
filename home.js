@@ -11,14 +11,6 @@ const users = [
     height: "5'6\"",
     hobbies: "Photography, Hiking, Reading",
     lookingFor: "Looking for someone adventurous who loves trying new restaurants and exploring the city. Must love dogs and be ready for spontaneous road trips!",
-    gallery: [
-      "https://i.pravatar.cc/200?img=11",
-      "https://i.pravatar.cc/200?img=12",
-      "https://i.pravatar.cc/200?img=13",
-      "https://i.pravatar.cc/200?img=14",
-      "https://i.pravatar.cc/200?img=15",
-      "https://i.pravatar.cc/200?img=16"
-    ]
   },
   {
     name: "Liam",
@@ -32,14 +24,6 @@ const users = [
     height: "6'1\"",
     hobbies: "Fitness, Cooking, Beach Volleyball",
     lookingFor: "Seeking someone who values health and wellness. Let's hit the gym together or catch a sunrise at the beach!",
-    gallery: [
-      "https://i.pravatar.cc/200?img=24",
-      "https://i.pravatar.cc/200?img=25",
-      "https://i.pravatar.cc/200?img=26",
-      "https://i.pravatar.cc/200?img=27",
-      "https://i.pravatar.cc/200?img=28",
-      "https://i.pravatar.cc/200?img=29"
-    ]
   },
   {
     name: "Sophie",
@@ -53,14 +37,6 @@ const users = [
     height: "5'4\"",
     hobbies: "Painting, Dog Training, Yoga",
     lookingFor: "Looking for a creative soul who appreciates art and nature. Dog lovers to the front of the line!",
-    gallery: [
-      "https://i.pravatar.cc/200?img=35",
-      "https://i.pravatar.cc/200?img=36",
-      "https://i.pravatar.cc/200?img=37",
-      "https://i.pravatar.cc/200?img=38",
-      "https://i.pravatar.cc/200?img=39",
-      "https://i.pravatar.cc/200?img=40"
-    ]
   },
   {
     name: "Jake",
@@ -74,14 +50,6 @@ const users = [
     height: "5'10\"",
     hobbies: "Gaming, Coding, Food Tours",
     lookingFor: "Searching for a fellow foodie who can appreciate a good slice of pizza and late-night coding sessions.",
-    gallery: [
-      "https://i.pravatar.cc/200?img=45",
-      "https://i.pravatar.cc/200?img=46",
-      "https://i.pravatar.cc/200?img=47",
-      "https://i.pravatar.cc/200?img=48",
-      "https://i.pravatar.cc/200?img=49",
-      "https://i.pravatar.cc/200?img=50"
-    ]
   },
   {
     name: "Maya",
@@ -95,14 +63,6 @@ const users = [
     height: "5'5\"",
     hobbies: "Yoga, Reading, Traveling",
     lookingFor: "Looking for someone mindful and adventurous. Let's explore new places and share our favorite books!",
-    gallery: [
-      "https://i.pravatar.cc/200?img=54",
-      "https://i.pravatar.cc/200?img=55",
-      "https://i.pravatar.cc/200?img=56",
-      "https://i.pravatar.cc/200?img=57",
-      "https://i.pravatar.cc/200?img=58",
-      "https://i.pravatar.cc/200?img=59"
-    ]
   }
 ];
 
@@ -114,7 +74,6 @@ const panelName = document.getElementById("panelName");
 const panelMainImg = document.getElementById("panelMainImg");
 const userDetails = document.getElementById("userDetails");
 const lookingFor = document.getElementById("lookingFor");
-const gallery = document.getElementById("gallery");
 
 const likeBtn = document.getElementById("likeBtn");
 const dislikeBtn = document.getElementById("dislikeBtn");
@@ -220,13 +179,6 @@ function openPanel(user) {
   // Populate looking for
   lookingFor.textContent = user.lookingFor;
 
-  // Populate gallery
-  gallery.innerHTML = "";
-  user.gallery.forEach(img => {
-    const image = document.createElement("img");
-    image.src = img;
-    gallery.appendChild(image);
-  });
 }
 
 // Like button functionality

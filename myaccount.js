@@ -17,19 +17,6 @@ const editBio = document.getElementById("editBio");
 const uploadProfilePic = document.getElementById("uploadProfilePic");
 const profilePic = document.getElementById("profilePic");
 
-const bannerUpload = document.getElementById("bannerUpload");
-const banner = document.querySelector(".banner");
-
-const addPostBtn = document.getElementById("addPostBtn");
-const postModal = document.getElementById("postModal");
-const cancelPost = document.getElementById("cancelPost");
-const submitPost = document.getElementById("submitPost");
-const newPostImg = document.getElementById("newPostImg");
-const caption = document.getElementById("caption");
-const myGallery = document.getElementById("myGallery");
-
-const addHighlight = document.getElementById("addHighlight");
-const myHighlights = document.getElementById("myHighlights");
 
 // =====================
 // EDIT PROFILE HANDLING
@@ -88,94 +75,6 @@ if (uploadProfilePic) {
   });
 }
 
-// =====================
-// BANNER UPLOAD
-// =====================
-if (bannerUpload) {
-  bannerUpload.addEventListener("change", (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        banner.style.backgroundImage = `url('${reader.result}')`;
-        banner.style.backgroundSize = "cover";
-        banner.style.backgroundPosition = "center";
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-}
-
-// =====================
-// ADD POST FUNCTIONALITY
-// =====================
-if (addPostBtn) {
-  addPostBtn.addEventListener("click", () => {
-    postModal.classList.add("active");
-  });
-}
-
-if (cancelPost) {
-  cancelPost.addEventListener("click", () => {
-    postModal.classList.remove("active");
-    newPostImg.value = "";
-    caption.value = "";
-  });
-}
-
-if (submitPost) {
-  submitPost.addEventListener("click", () => {
-    const file = newPostImg.files[0];
-    if (!file) {
-      alert("⚠️ Please select an image to post.");
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      const img = document.createElement("img");
-      img.src = reader.result;
-      img.alt = caption.value || "Post";
-      img.title = caption.value;
-      myGallery.prepend(img); // adds to the top
-
-      postModal.classList.remove("active");
-      newPostImg.value = "";
-      caption.value = "";
-      alert("✅ Post added successfully!");
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-// =====================
-// STORY HIGHLIGHT ADD
-// =====================
-if (addHighlight) {
-  addHighlight.addEventListener("click", () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.click();
-
-    input.addEventListener("change", (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const highlightDiv = document.createElement("div");
-          highlightDiv.classList.add("highlight");
-          highlightDiv.innerHTML = `
-            <img src="${reader.result}" alt="Story Highlight">
-            <span>Story</span>
-          `;
-          myHighlights.appendChild(highlightDiv);
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  });
-}
 
 // =====================
 // NAVIGATION BUTTONS
