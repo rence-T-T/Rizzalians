@@ -6,6 +6,35 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // =====================
+// WAREHOUSE HELPER FUNCTIONS
+// =====================
+async function updateWarehouseTables() {
+  const today = new Date();
+  const dateKey = parseInt(today.toISOString().slice(0, 10).replace(/-/g, ''));
+  const fullDate = today.toISOString().slice(0, 10);
+  
+  try {
+    // 1. Ensure date exists in dim_date
+    const { error: dateError } = await supabase
+      .from('dim_date')
+      .upsert({
+        date_key: dateKey,
+        full_date: fullDate,
+        year: today.getFullYear(),
+        month: today.getMonth() + 1,
+        day_of_month: today.getDate(),
+        day_name: today.toLocaleDateString('en-US', { weekday: 'long' }),
+        is_weekend: today.getDay() === 0 || today.getDay() === 6
+      }, { onConflict: 'date_key' });
+    
+    if (dateError) console.error("Date dimension error:", dateError);
+    
+  } catch (err) {
+    console.error("Warehouse update error:", err);
+  }
+}
+
+// =====================
 // ELEMENT REFERENCES
 // =====================
 const editProfileBtn = document.getElementById("editProfileBtn");
@@ -164,6 +193,9 @@ if (saveProfile) {
         return;
       }
 
+      // Update warehouse tables
+      await updateWarehouseTables();
+
       editProfileModal.classList.remove("active");
       alert("✅ Profile updated successfully!");
 
@@ -225,6 +257,10 @@ if (uploadProfilePic) {
 
       // Display new image immediately
       profilePic.src = publicURL;
+
+      // Update warehouse tables
+      await updateWarehouseTables();
+
       alert("✅ Profile picture updated!");
 
     } catch (err) {

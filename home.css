@@ -68,7 +68,6 @@ body {
   gap: 30px;
   padding: 40px;
   position: relative;
-  overflow-x: hidden;
   scroll-behavior: smooth;
   transition: transform 0.5s ease;
 }
